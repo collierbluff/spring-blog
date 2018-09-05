@@ -23,7 +23,7 @@ public class PostController {
     @GetMapping("/posts/create")
     @ResponseBody
     private String createPostForm(){
-        return "This will be the create posts form <br><form action = '/posts' method = 'GET'><input type='text' name ='id'><button>Submit</button></form>";
+        return "This will be the create posts form <br>Here's a form for testing /posts<br><form action = '/posts' method = 'GET'><input type='text' name ='id'><button>Submit</button></form>";
     }
 
     @PostMapping("/posts/create")
