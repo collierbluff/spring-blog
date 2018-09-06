@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/partials :: head"></head>
+<head th:replace="fragments/partials :: head('Welcome to the specific post page!')"></head>
 
 
 <body>
@@ -12,7 +12,7 @@
 <h2>Here's a post!</h2>
 
 <div class="post">
-    <h1 th:text="${post.title}" />
+    <h3 th:text="${post.title}" />
     <p th:text="${post.body}" />
 </div>
 

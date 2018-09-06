@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="head">
+<head th:fragment="head(title)">
     <meta charset="UTF-8" />
-    <title>Welcome to the blog!</title>
+    <title th:text="${title}"></title>
     <link rel="stylesheet" href="/css/main.css" />
 </head>
 
@@ -22,6 +22,13 @@
 </header>
 
 <footer th:fragment="footer">
+
+    <ul>
+        <li>About Us</li>
+        <li>Contact Us</li>
+        <li>Careers</li>
+    </ul>
+
 </footer>
 
 </html>

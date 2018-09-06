@@ -33,11 +33,10 @@ public class PostController {
         return "posts/show";
     }
 
-//    Has unnecessary functionality for testing query strings
     @GetMapping("/posts/create")
     @ResponseBody
     private String createPostForm(){
-        return "This will be the create posts form <br>Here's a form for testing /posts<br><form action = '/posts' method = 'GET'><input type='text' name ='id'><button>Submit</button></form>";
+        return "This will be the create posts form";
     }
 
     @PostMapping("/posts/create")
