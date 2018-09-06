@@ -10,6 +10,12 @@
 <div th:replace="fragments/partials :: header"></div>
 
 
+<h2>Here's every post!</h2>
+
+<div class="post" th:each="post : ${posts}">
+    <h1 th:text="${post.title}" />
+    <p th:text="${post.body}" />
+</div>
 
 
 <div th:replace="fragments/partials :: footer"></div>

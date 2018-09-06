@@ -19,8 +19,8 @@ public class PostController {
 
             List<Post> allPosts = new ArrayList<>();
 
-            allPosts.add(new Post());
-            allPosts.add(new Post());
+            allPosts.add(new Post("Title", "Body"));
+            allPosts.add(new Post("Second Title", "Body"));
 
             model.addAttribute("posts", allPosts);
 
@@ -28,7 +28,7 @@ public class PostController {
         }
 
 
-        model.addAttribute("post", new Post());
+        model.addAttribute("post", new Post("Title", "Body"));
 
         return "posts/show";
     }

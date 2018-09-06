@@ -6,11 +6,15 @@
 
 <body>
 
-
 <div th:replace="fragments/partials :: navbar"></div>
 <div th:replace="fragments/partials :: header"></div>
 
+<h2>Here's a post!</h2>
 
+<div class="post">
+    <h1 th:text="${post.title}" />
+    <p th:text="${post.body}" />
+</div>
 
 
 <div th:replace="fragments/partials :: footer"></div>
