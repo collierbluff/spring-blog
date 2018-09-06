@@ -1,7 +1,11 @@
 package com.blog.blog;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PostController {
@@ -9,14 +13,24 @@ public class PostController {
 
 //  Bundled together individual post and many post viewing to the same url
     @GetMapping("/posts")
-    @ResponseBody
-    private String posts(@RequestParam(value = "id", defaultValue = "All") String id){
+    private String posts(@RequestParam(value = "id", defaultValue = "All") String id, Model model){
 
         if(id.equals("All")){
-            return "This will be the index page.";
+
+            List<Post> allPosts = new ArrayList<>();
+
+            allPosts.add(new Post());
+            allPosts.add(new Post());
+
+            model.addAttribute("posts", allPosts);
+
+            return "posts/index";
         }
 
-        return "This will be the individual post page for id number " + id + " .";
+
+        model.addAttribute("post", new Post());
+
+        return "posts/show";
     }
 
 //    Has unnecessary functionality for testing query strings
