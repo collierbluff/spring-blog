@@ -9,6 +9,11 @@ import java.util.List;
 
 @Controller
 public class PostController {
+    private final PostService postService;
+
+    public PostController(PostService postService){
+        this.postService = postService;
+    }
 
 
 //  Bundled together individual post and many post viewing to the same url
@@ -17,10 +22,7 @@ public class PostController {
 
         if(id.equals("All")){
 
-            List<Post> allPosts = new ArrayList<>();
-
-            allPosts.add(new Post("Title", "Body"));
-            allPosts.add(new Post("Second Title", "Body"));
+            List<Post> allPosts = postService.findAll();
 
             model.addAttribute("posts", allPosts);
 
@@ -28,20 +30,24 @@ public class PostController {
         }
 
 
-        model.addAttribute("post", new Post("Title", "Body"));
+        Post post = postService.findOne(Integer.parseInt(id));
+
+        model.addAttribute("post", post);
 
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    private String createPostForm(){
-        return "This will be the create posts form";
+    private String createPostForm(Model model){
+
+        model.addAttribute("post", new Post());
+
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    private String createPost(){
-        return "This will be where new posts are created";
+    public String insertPost(@ModelAttribute Post post){
+        postService.save(post);
+        return "redirect:/posts";
     }
 }
