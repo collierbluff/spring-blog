@@ -1,9 +1,18 @@
 package com.blog.blog;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="posts")
 public class Post {
 
+    @Column(nullable = false, length = 100)
     private String title;
+    @Column(nullable = false)
     private String body;
+
+    @Id @GeneratedValue
     private int id;
 
     public Post(String title, String body){

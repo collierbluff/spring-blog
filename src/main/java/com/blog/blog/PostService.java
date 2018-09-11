@@ -8,36 +8,29 @@ import java.util.List;
 @Service
 public class PostService {
 
+PostRepository postDao;
+
 private List<Post> allPosts;
 
-public PostService(){
-    allPosts = new ArrayList<>();
-    createPosts();
+public PostService(PostRepository postDao){
+    this.postDao = postDao;
+
 }
 
 
-public List<Post> findAll(){
+public List<Post> findAll() {
 
-    return allPosts;
+    return postDao.findAll();
 }
 
 public Post findOne(int id){
 
-    return allPosts.get(id - 1);
+    return postDao.findPostById(id);
 }
 
-private void createPosts(){
-
-    save(new Post("Title", "Body"));
-    save(new Post("Titley", "Bodie"));
-    save(new Post("Titular", "Bowie"));
-    save(new Post("Titanic", "Boxy"));
-
-}
 
 public void save(Post post){
-    post.setId(allPosts.size() + 1);
-    allPosts.add(post);
+    postDao.savePost(post);
 }
 
 
